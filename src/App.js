@@ -5,12 +5,19 @@ import './App.css';
 
 const App = ({ todos }) => {
    const todoList = todos.map((todo,index) => 
-   <div className="mark">
+   <div className="mark text-center">
    <ul key={todo.id}> 
        <li>{todo.name}</li>
+       <hr/>
        <li>{todo.comment}</li>
-       <li> <button onClick={() => removePlayer(index)}>Delete comment</button>
-           <button onClick={() => abuse()}>Report as abuse</button>
+       <li><div className="row"> 
+            <div className="col-lg-6 col-sx-12">
+                <button className="text-right" onClick={() => removePlayer(index)}>Delete comment</button>
+            </div>
+            <div className="col-lg-6 col-sx-12">
+                <button className="text-left" onClick={() => abuse()}>Report as abuse</button>
+            </div>
+           </div>
        </li> 
     </ul>
     </div>
@@ -24,22 +31,33 @@ const App = ({ todos }) => {
          <header>
             <h3>New comment</h3>
             <form onSubmit={onSubmit}>
+            <div className="group">
+                <br/>
                <input
                   type="text"
                   name="name"
-                  placeholder="Name"
                   ref={e => (this.name = e)}
-               />
-               <hr/>
+                  required
+                  className="input form-control"
+               /><br/>
+               <span className="highlight" />
+               <label className="label"> Name</label>
+            </div><br/>
+            <div className="group">  
+                <br/>
                <input
                   type="text"
                   name= "comment"
-                  placeholder="Comment"
+                  required
+                  className="input form-control"
                   ref={e => (this.comment = e)}
                />
-               <button type="submit" name="submit" value="submit">
+               <span className="highlight" />
+               <label className="label">Comment</label>
+               <button type="submit" name="submit" value="submit" >
                   Submit
                </button>
+               </div>
             </form>
          </header>
          <div className="main">
