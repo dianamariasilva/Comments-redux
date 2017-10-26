@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { addTodo, removeList, abuse } from './actions';
+import { addTodo, removePlayer, abuse } from './actions';
 import { connect } from 'redux-zero/react';
 import './App.css';
 
 const App = ({ todos }) => {
-   const todoList = todos.map(todo => 
+   const todoList = todos.map((todo,index) => 
+   <div className="mark">
    <ul key={todo.id}> 
        <li>{todo.name}</li>
        <li>{todo.comment}</li>
-       <li> <button onClick={() => removeList(todos)}>Delete comment</button>
+       <li> <button onClick={() => removePlayer(index)}>Delete comment</button>
            <button onClick={() => abuse()}>Report as abuse</button>
        </li> 
-    </ul>);
+    </ul>
+    </div>
+    );
    const onSubmit = e => {
       e.preventDefault();
       addTodo(this.name.value, this.comment.value)
