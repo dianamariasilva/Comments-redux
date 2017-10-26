@@ -5,11 +5,13 @@ import './App.css';
 
 const App = ({ todos }) => {
    const todoList = todos.map((todo,index) => 
-   <div className="mark text-center">
-   <ul key={todo.id}> 
-       <li>{todo.name}</li>
+   <div className="text-center">
+   <ul key={todo.id} className="mark"> 
+       <div className="row">
+       <li className="col-lg-12">{todo.name}</li>
        <hr/>
-       <li>{todo.comment}</li>
+       <li className="col-lg-12">{todo.comment}</li>
+       </div>
        <li><div className="row"> 
             <div className="col-lg-6 col-sx-12">
                 <button className="text-right" onClick={() => removePlayer(index)}>Delete comment</button>
@@ -39,10 +41,10 @@ const App = ({ todos }) => {
                   ref={e => (this.name = e)}
                   required
                   className="input form-control"
-               /><br/>
+               />
                <span className="highlight" />
                <label className="label"> Name</label>
-            </div><br/>
+            </div>
             <div className="group">  
                 <br/>
                <input
@@ -62,7 +64,7 @@ const App = ({ todos }) => {
          </header>
          <div className="main">
             <h4> Comments : {todos.length} </h4>
-            <ul id="invitedList">
+            <ul id="invitedList" className="comments">
                 {todoList}
             </ul>
          </div>
